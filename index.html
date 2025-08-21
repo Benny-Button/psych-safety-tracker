@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Psychological Safety Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="no-print">
+  <h1>Psychological Safety Tracker</h1>
+  <div class="controls">
+    <button id="exportCsv">Export CSV</button>
+    <button id="exportJson">Export JSON</button>
+    <button id="exportPdf">Export PDF</button>
+    <button id="clearAll" class="danger">Clear All (local)</button>
+  </div>
+</header>
+
+<main>
+  <section class="grid" id="cardGrid"></section>
+
+  <section class="panel">
+    <h2>Capture notes</h2>
+    <form id="logForm">
+      <div class="row">
+        <label>Selected item
+          <input id="selectedItem" readonly placeholder="Click a square above" />
+        </label>
+      </div>
+      <div class="row">
+        <label>Notes
+          <textarea id="notes" rows="5" placeholder="What happened? What made it feel safe?"></textarea>
+        </label>
+      </div>
+      <div class="row no-print">
+        <button type="submit">Save</button>
+        <button type="button" id="clearForm" class="secondary">Clear</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <button id="toggleDashboard" class="secondary" type="button">Show Dashboard ▼</button>
+    <div id="dashboardContent" hidden>
+      <h2>Dashboard</h2>
+    <div class="stats">
+      <div><strong id="totalCount">0</strong><span>Total</span></div>
+      <div><strong id="last7">0</strong><span>Last 7 days</span></div>
+      <div><strong id="last30">0</strong><span>Last 30 days</span></div>
+      <div class="streak"><strong id="currentStreak">0</strong><span>Current streak</span></div>
+      <div class="streak"><strong id="bestStreak">0</strong><span>Best streak</span></div>
+    </div>
+    <div id="byItem" class="by-item"></div>
+    <div class="trend">
+      <canvas id="trendCanvas" width="900" height="200" aria-label="30-day trend"></canvas>
+    </div>
+      </div>
+  </section>
+
+  <section class="panel">
+    <h2>Tip of the day</h2>
+    <div id="tipOfDay"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Recent entries</h2>
+    <ul id="recent"></ul>
+  </section>
+</main>
+
+<footer class="no-print">
+  <small>Notes are stored locally. Tap the 💡 on any tile to read tips.</small>
+</footer>
+
+<!-- Tip modal (read-only) -->
+<div id="tipModal" class="modal" hidden>
+  <div class="modal-inner">
+    <button id="closeModal" class="close">×</button>
+    <h3 id="tipTitle"></h3>
+    <ol id="tipList"></ol>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
