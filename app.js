@@ -26,10 +26,28 @@ const tipTitle=document.getElementById("tipTitle");
 const tipList=document.getElementById("tipList");
 const closeModal=document.getElementById("closeModal");
 
-document.getElementById("exportCsv").addEventListener("click",()=>download("notes_export.csv",toCsv(events)));
-document.getElementById("exportJson").addEventListener("click",()=>download("notes_export.json",JSON.stringify(events,null,2)));
-document.getElementById("exportPdf").addEventListener("click",()=>window.print());
-document.getElementById("clearAll").addEventListener("click",()=>{ if(confirm("Clear ALL saved notes on this device?")){ events=[]; save(); renderRecent(); updateAll(); }});
+const csvBtn   = document.getElementById("exportCsv");
+const jsonBtn  = document.getElementById("exportJson");
+const pdfBtn   = document.getElementById("exportPdf");
+const clearBtn = document.getElementById("clearAll");
+
+if (csvBtn)  csvBtn.addEventListener("click", () =>
+  download("notes_export.csv", toCsv(events))
+);
+// If you’ve removed JSON/PDF buttons, these lines will harmlessly skip:
+if (jsonBtn) jsonBtn.addEventListener("click", () =>
+  download("notes_export.json", JSON.stringify(events, null, 2))
+);
+if (pdfBtn)  pdfBtn.addEventListener("click", () => window.print());
+
+if (clearBtn) clearBtn.addEventListener("click", () => {
+  if (confirm("Clear ALL saved notes on this device?")) {
+    events = [];
+    save();
+    renderRecent();
+    updateAll();
+  }
+});
 
 // Build grid with light bulb icon
 ITEMS.forEach(label=>{
