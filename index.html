@@ -18,10 +18,8 @@
 </header>
 
 <main>
-  <!-- Tiles -->
   <section class="grid" id="cardGrid"></section>
 
-  <!-- Capture notes -->
   <section class="panel">
     <h2>Capture notes</h2>
     <form id="logForm">
@@ -42,23 +40,29 @@
     </form>
   </section>
 
-  <!-- Tip of the day -->
+  <section class="panel">
+    <button id="toggleDashboard" class="secondary" type="button">Show Dashboard ▼</button>
+    <div id="dashboardContent" hidden>
+      <h2>Dashboard</h2>
+    <div class="stats">
+      <div><strong id="totalCount">0</strong><span>Total</span></div>
+      <div><strong id="last7">0</strong><span>Last 7 days</span></div>
+      <div><strong id="last30">0</strong><span>Last 30 days</span></div>
+      <div class="streak"><strong id="currentStreak">0</strong><span>Current streak</span></div>
+      <div class="streak"><strong id="bestStreak">0</strong><span>Best streak</span></div>
+    </div>
+    <div id="byItem" class="by-item"></div>
+    <div class="trend">
+      <canvas id="trendCanvas" width="900" height="200" aria-label="30-day trend"></canvas>
+    </div>
+      </div>
+  </section>
+
   <section class="panel">
     <h2>Tip of the day</h2>
     <div id="tipOfDay"></div>
   </section>
 
-  <!-- Wellbeing Companion button (black/white) -->
-  <div style="margin-top: 20px; text-align: center;">
-    <a href="https://bot.bennybutton.com" target="_blank"
-       style="background-color: black; color: white;
-              padding: 10px 20px; border-radius: 6px;
-              text-decoration: none; font-weight: bold;">
-      💬 Ask the Wellbeing Companion
-    </a>
-  </div>
-
-  <!-- Recent entries -->
   <section class="panel">
     <h2>Recent entries</h2>
     <ul id="recent"></ul>
