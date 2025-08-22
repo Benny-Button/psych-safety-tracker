@@ -44,3 +44,23 @@ label{display:flex;flex-direction:column;gap:6px;font-size:14px}input,textarea{p
   .square{ min-height:72px; }
   .trend canvas{ max-width:100%; }
 }
+/* Base button look is already handled by your .controls button styles.
+   This makes the companion button match but inverted. */
+.companion-btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  font-size: 1em;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.companion-btn:hover {
+  background-color: #333;
+  border-color: #333;
+}
